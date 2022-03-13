@@ -1,0 +1,154 @@
+<!--Saved by Quest 5.8.6794.35054-->
+<asl version="580">
+  <include ref="English.aslx" />
+  <include ref="Core.aslx" />
+  <game name="The Door">
+    <gameid>297e3cee-dfae-4174-91f1-932b1b54ab48</gameid>
+    <version>1.0</version>
+    <firstpublished>2022</firstpublished>
+    <menufont>Georgia, serif</menufont>
+  </game>
+  <object name="Old mansion">
+    <inherit name="editor_room" />
+    <isroom />
+    <object name="player">
+      <inherit name="editor_object" />
+      <inherit name="editor_player" />
+    </object>
+    <exit alias="west" to="Study Room">
+      <inherit name="westdirection" />
+    </exit>
+  </object>
+  <object name="Study Room">
+    <inherit name="editor_room" />
+    <object name="desk">
+      <inherit name="editor_object" />
+      <takemsg>This is a dusty old desk</takemsg>
+    </object>
+    <object name="ladder">
+      <inherit name="editor_object" />
+      <takemsg>You picked up the ladder.</takemsg>
+      <feature_wearable />
+      <take />
+      <ontake type="script">
+        AddToInventory (ladder)
+      </ontake>
+    </object>
+    <object name="fireplace">
+      <inherit name="editor_object" />
+      <take type="boolean">false</take>
+    </object>
+    <object name="south wall">
+      <inherit name="editor_object" />
+      <isroom />
+      <look><![CDATA[{if ladder=value: There is a beautiful garden outside.}<br/>{if ladder=false: There is a window on the wall but it is quite high up. Look for something to reach it.}]]></look>
+      <exit alias="north" to="Study Room">
+        <inherit name="northdirection" />
+      </exit>
+    </object>
+    <exit alias="south" to="south wall">
+      <inherit name="southdirection" />
+    </exit>
+    <object name="west wall">
+      <inherit name="editor_room" />
+      <isroom />
+      <description>There is nothing on the wall but you can use the door in the inventory to go through the wall.</description>
+      <exit alias="east" to="Study Room">
+        <inherit name="eastdirection" />
+      </exit>
+    </object>
+    <exit alias="west" to="west wall">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="east" to="Living Room">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+  <object name="Secret Room">
+    <inherit name="editor_room" />
+    <description><![CDATA[The secrets are really important, make sure to write them down.<br/>]]></description>
+    <exit alias="west" to="Living Room">
+      <inherit name="westdirection" />
+    </exit>
+    <object name="north secret">
+      <inherit name="editor_object" />
+    </object>
+    <object name="south secret">
+      <inherit name="editor_object" />
+    </object>
+    <object name="east secret">
+      <inherit name="editor_object" />
+    </object>
+    <object name="west secret">
+      <inherit name="editor_room" />
+    </object>
+    <exit alias="east" to="Garden">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+  <object name="Garden">
+    <inherit name="editor_room" />
+    <exit alias="west" to="Secret Room">
+      <inherit name="westdirection" />
+    </exit>
+    <object name="water">
+      <inherit name="editor_object" />
+      <look><![CDATA[            Yumm! Looks like fresh water. This certainly quenched the thirst of the tired player! But this does not look like an ordinary fountain...<br/>]]></look>
+      <feature_usegive />
+    </object>
+    <object name="north garden">
+      <inherit name="editor_object" />
+      <look><![CDATA[        There is nothing to see here. Maybe explore more of the garden to get tools and clues to the trophy!!!<br/>]]></look>
+    </object>
+    <object name="west garden">
+      <inherit name="editor_object" />
+      <look><![CDATA[            There is a shovel at the west end of the Garden. You should collect all such tools to help you get the trophy!<br/>]]></look>
+    </object>
+    <object name="south garden">
+      <inherit name="editor_object" />
+      <look><![CDATA[            There is a sign on the wall saying: "DIG HERE".<br/>            Wonder if there was such a tool to do that... Explore the garden more to find more clues related to this.<br/>]]></look>
+    </object>
+    <object name="east garden">
+      <inherit name="editor_object" />
+      <look><![CDATA[        There is nothing to see here. Maybe explore more of the garden to get tools and clues to the trophy!!!<br/>]]></look>
+    </object>
+    <object name="trophy">
+      <inherit name="editor_object" />
+      <look><![CDATA[You go on digging and finally find a treasure box!<br/>You open the box and there is a shining Magic coin in it.<br/>]]></look>
+      <take />
+      <takemsg>Thank you for the magic coin! I know what you have been looking for all this while!</takemsg>
+    </object>
+  </object>
+  <object name="Living Room">
+    <inherit name="editor_room" />
+    <description><![CDATA[Look around! Try to escape this room. Remember, you want to win the trophy!<br/>]]></description>
+    <exit alias="west" to="Study Room">
+      <inherit name="westdirection" />
+    </exit>
+    <object name="north wall">
+      <inherit name="editor_object" />
+      <exit alias="south" to="Living Room">
+        <inherit name="southdirection" />
+      </exit>
+    </object>
+    <exit alias="north" to="north wall">
+      <inherit name="northdirection" />
+    </exit>
+    <object name="south wall living">
+      <inherit name="editor_object" />
+      <isroom type="boolean">false</isroom>
+      <look><![CDATA[        There is nothing on this wall. Explore more and try to uncover the SECRETS!!!<br/>]]></look>
+    </object>
+    <object name="east wall living">
+      <inherit name="editor_object" />
+      <look><![CDATA[        There is the door you used to enter the Living Room! Want to go back to the dusty study?<br/>]]></look>
+    </object>
+    <object name="west wall living">
+      <inherit name="editor_object" />
+      <look>   There is nothing on the wall. But there is something different about this wall. Looks like there could be a door here. Explore more to know about the secrets of the wall!</look>
+    </object>
+    <exit alias="east" to="Secret Room">
+      <inherit name="eastdirection" />
+    </exit>
+  </object>
+</asl>
