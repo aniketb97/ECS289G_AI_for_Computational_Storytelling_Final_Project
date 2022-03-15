@@ -15,6 +15,9 @@ Interactive storytelling is an amalgamation of reading a story and playing a gam
 #### Comparison diagram of authoring systems based on 21 metrics
 ![Comparison Diagram](https://github.com/aniketb97/ECS289G_AI_for_Computational_Storytelling_Final_Project/blob/main/metrics_data/metricsDiagram.jpg)
 
+#### Ranking Score Table
+![Comparison Diagram](https://github.com/aniketb97/ECS289G_AI_for_Computational_Storytelling_Final_Project/blob/main/metrics_data/metricsDiagram.jpg)
+
 
 ## Contributors
 
